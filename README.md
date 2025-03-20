@@ -1,2 +1,2 @@
-# GoDocumentChat
+# GoRagSearch
 LLM based Document DB abstraction
