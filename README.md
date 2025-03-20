@@ -1,2 +1,2 @@
 # GoRagSearch
-LLM based Document DB abstraction
+LLM based Document search abstraction that can be extended
