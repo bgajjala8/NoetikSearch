@@ -1,11 +1,11 @@
 package service
 
 import (
-    "io"
-    "log"
-    "net/http"
-    "github.com/bgajjala8/GoRagSearch/domain/search"
-    "github.com/bgajjala8/GoRagSearch/domain/userDB"
+	"github.com/bgajjala8/GoRagSearch/domain/search"
+	"github.com/bgajjala8/GoRagSearch/domain/userDB"
+	"io"
+	"log"
+	"net/http"
 )
 
 const (

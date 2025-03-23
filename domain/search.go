@@ -1,6 +1,6 @@
 package domain
 
-//Search represents a search request
+// Search represents a search request
 type Search struct {
 	//Query Prompt
 	Prompt string
