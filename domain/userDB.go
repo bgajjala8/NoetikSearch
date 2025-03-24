@@ -19,7 +19,7 @@ func NewUserDB(filePointers *[]string, segments *[]string) *UserDB {
 	copy(segsCopy, *segments)
 
 	return &UserDB{
-		FilePointers: filePointers,
-		Segments:     segments,
+		FilePointers: fpCopy,
+		Segments:     copy,
 	}
 }
