@@ -1,11 +1,15 @@
 package service
 
 import (
-	"github.com/bgajjala8/GoRagSearch/domain/search"
-	"github.com/bgajjala8/GoRagSearch/domain/userDB"
-	"io"
-	"log"
-	"net/http"
+	"log/slog"
+	"os"
+
+	"GoRagSearch/domain/search"
+	"GoRagSearch/domain/userDB"
+)
+
+var (
+	logger = slog.New(slog.NewTextHandler(os.Stdout, nil))
 )
 
 const (
@@ -16,6 +20,14 @@ type SearchRequest struct {
 	Prompt string
 }
 
+// newSearchRequest creates a new search request (package use only)
+func newSearchRequest(prompt string) *SearchRequest {
+	return &SearchRequest{
+		Prompt: prompt,
+	}
+}
+
 func Search(req search.Search) *userDB.UserDB {
 	//Call repository and build
+	logger.Info("Search request received", req)
 }
