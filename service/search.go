@@ -4,7 +4,7 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/bgajjala8/GoRagSearch/domain"
+	"github.com/bgajjala8/NoetikSearch/domain"
 )
 
 var (
