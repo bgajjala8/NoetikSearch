@@ -4,8 +4,7 @@ import (
 	"log/slog"
 	"os"
 
-	"GoRagSearch/domain/search"
-	"GoRagSearch/domain/userDB"
+	"github.com/bgajjala8/GoRagSearch/domain"
 )
 
 var (
@@ -27,7 +26,7 @@ func newSearchRequest(prompt string) *SearchRequest {
 	}
 }
 
-func Search(req search.Search) *userDB.UserDB {
+func Search(req domain.Search) *domain.UserDB {
 	//Call repository and build
 	logger.Info("Search request received", req)
 }
