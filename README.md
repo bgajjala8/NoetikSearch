@@ -1,61 +1,43 @@
 # NoetikSearch
 
-A library of reusable prompts, in a simple portable format that works across VS Code,
-Cursor, Claude Code, opencode, and any other AI coding tool.
+Prompts I reuse, kept as plain markdown so they work in whatever tool I'm using.
 
 ```
-prompts/           portable version of each prompt
-.github/prompts/   VS Code Copilot slash commands
-AGENTS.md          instructions for AI agents working in this repo
+prompts/           the prompt itself
+.github/prompts/   VS Code slash command version
+AGENTS.md          notes for agents working in this repo
 ```
 
-## Design Goals
+## The format
 
-- Plain markdown — no proprietary syntax
-- Works by copy-paste, slash command, or file reference
-- Variables use `{{VARIABLE_NAME}}` — universally understood by every LLM
-- Modes are passed as a variable, not baked into conditional blocks
-- No dependencies, no framework, no build step
-
-## File Structure
-
-Each prompt is a single `.md` file with three sections:
+One markdown file per prompt:
 
 ```
 # Prompt Name
 
-> One-line description of what this prompt does.
+> What it does, in one line.
 
 ## Variables
-List of variables the user must fill in before running.
+What you need to fill in.
 
 ## Modes (optional)
-List of available modes and what each one does.
+The modes it supports.
 
 ## Prompt
-The actual prompt text sent to the model.
+The text you actually send.
 ```
 
-## Variables
+Variables look like `{{VARIABLE_NAME}}`, always caps. List every one you use under
+`## Variables` so it's clear what has to be filled in before running it.
 
-Use `{{VARIABLE_NAME}}` anywhere in the prompt body. Variable names are SCREAMING_SNAKE_CASE.
+Modes are just a value passed in as `{{MODE}}`. The prompt body spells out what each
+mode should do and the model handles the branching. No conditionals, no templating, no
+tool-specific syntax.
 
-Always document variables in the `## Variables` section so it's clear what needs to be filled in.
+## Using them
 
-## Modes
+In VS Code, use the copy in `.github/prompts/` and it shows up as a slash command.
+Anywhere else, open the file, copy the `## Prompt` section, fill in the variables and
+paste it.
 
-Modes are just a value passed into `{{MODE}}`. The prompt body tells the model what to do for each mode. No conditionals, no tool-specific syntax — the LLM handles the branching.
-
-## How to Use in Each Tool
-
-| Tool                | How to use                                                                                |
-| ------------------- | ----------------------------------------------------------------------------------------- |
-| **VS Code Copilot** | Use the matching `.prompt.md` in `.github/prompts/` for a native slash command experience |
-| **Cursor**          | Paste into Cursor chat with variables filled in, or add to `.cursorrules` as context      |
-| **Claude Code**     | Reference the file directly or paste into the conversation                                |
-| **opencode**        | Reference the file directly or paste into the conversation                                |
-| **Any tool**        | Copy the `## Prompt` section, fill in `{{VARIABLES}}`, paste and run                      |
-
-## Example
-
-See [`prompts/explain-pr.md`](prompts/explain-pr.md) for a real example.
+[`prompts/explain-pr.md`](prompts/explain-pr.md) is a working example.
